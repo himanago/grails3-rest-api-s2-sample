@@ -1,0 +1,7 @@
+import rest.s2.sample.auth.Role
+
+model {
+	Role role
+}
+
+json g.render(role, [resolveTemplate: false])

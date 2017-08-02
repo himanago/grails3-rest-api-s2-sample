@@ -1,0 +1,7 @@
+import rest.s2.sample.auth.user
+
+model {
+	User user
+}
+
+json tmpl.user(user)

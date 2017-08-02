@@ -1,0 +1,7 @@
+import rest.s2.sample.Book
+
+model {
+	Book book
+}
+
+json tmpl.book(book)

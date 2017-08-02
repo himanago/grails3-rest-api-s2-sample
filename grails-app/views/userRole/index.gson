@@ -1,0 +1,8 @@
+import rest.s2.sample.auth.UserRole
+
+model {
+	Iterable<UserRole> userRoleList
+}
+
+json tmpl.userRole(userRoleList ?: [])
+
