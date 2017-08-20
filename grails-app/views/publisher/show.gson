@@ -1,0 +1,7 @@
+import rest.s2.sample.Publisher
+
+model {
+	Publisher publisher
+}
+
+json tmpl.publisher(publisher)
