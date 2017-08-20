@@ -5,52 +5,52 @@ import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
 @Secured('ROLE_ADMIN')
-class BookController {
+class PublisherController {
 
-    BookService bookService
+    PublisherService publisherService
 
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond bookService.list(params), model:[bookCount: bookService.count()]
+        respond publisherService.list(params), model:[publisherCount: publisherService.count()]
     }
 
     def show(Long id) {
-        respond bookService.get(id)
+        respond publisherService.get(id)
     }
 
-    def save(Book book) {
-        if (book == null) {
+    def save(Publisher publisher) {
+        if (publisher == null) {
             render status: NOT_FOUND
             return
         }
 
         try {
-            bookService.save(book)
+            publisherService.save(publisher)
         } catch (ValidationException e) {
-            respond book.errors, view:'create'
+            respond publisher.errors, view:'create'
             return
         }
 
-        respond book, [status: CREATED, view:"show"]
+        respond publisher, [status: CREATED, view:"show"]
     }
 
-    def update(Book book) {
-        if (book == null) {
+    def update(Publisher publisher) {
+        if (publisher == null) {
             render status: NOT_FOUND
             return
         }
 
         try {
-            bookService.save(book)
+            publisherService.save(publisher)
         } catch (ValidationException e) {
-            respond book.errors, view:'edit'
+            respond publisher.errors, view:'edit'
             return
         }
 
-        respond book, [status: OK, view:"show"]
+        respond publisher, [status: OK, view:"show"]
     }
 
     def delete(Long id) {
@@ -59,7 +59,7 @@ class BookController {
             return
         }
 
-        bookService.delete(id)
+        publisherService.delete(id)
 
         render status: NO_CONTENT
     }
